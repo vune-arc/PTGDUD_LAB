@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    // Hàm tính điểm trung bình
+    function tinhDiemTrungBinh(diem1, diem2, diem3) {
+      return (diem1 + diem2 + diem3) / 3;
+    }
+
+    // Hàm xác định đội chiến thắng
+    function xacDinhNguoiChienThang(diemDolphins, diemKoalas) {
+      const diemTrungBinhDolphins = tinhDiemTrungBinh(...diemDolphins);
+      const diemTrungBinhKoalas = tinhDiemTrungBinh(...diemKoalas);
+
+      if (diemTrungBinhDolphins > diemTrungBinhKoalas && diemTrungBinhDolphins >= 100) {
+        console.log(
+          `Dolphins chiến thắng với điểm trung bình là ${diemTrungBinhDolphins.toFixed(
+            2
+          )}!`
+        );
+      } else if (diemTrungBinhKoalas > diemTrungBinhDolphins && diemTrungBinhKoalas >= 100) {
+        console.log(
+          `Koalas chiến thắng với điểm trung bình là ${diemTrungBinhKoalas.toFixed(
+            2
+          )}!`
+        );
+      } else if (
+        diemTrungBinhDolphins === diemTrungBinhKoalas &&
+        diemTrungBinhDolphins >= 100 &&
+        diemTrungBinhKoalas >= 100
+      ) {
+        console.log(
+          `Hòa! Cả hai đội đều có điểm trung bình là ${diemTrungBinhDolphins.toFixed(
+            2
+          )}!`
+        );
+      } else {
+        console.log("Không có đội chiến thắng do điểm không đủ.");
+      }
+    }
+
+    // Dữ liệu thử nghiệm
+    console.log("Dữ liệu thử nghiệm 1:");
+    xacDinhNguoiChienThang([96, 108, 89], [88, 91, 110]);
+
+    console.log("Dữ liệu thử nghiệm Bonus 1:");
+    xacDinhNguoiChienThang([97, 112, 101], [109, 95, 123]);
+
+    console.log("Dữ liệu thử nghiệm Bonus 2:");
+    xacDinhNguoiChienThang([97, 112, 101], [109, 95, 106]);
+  </script>
+</html>
