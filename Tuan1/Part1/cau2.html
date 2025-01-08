@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    let markMass1 = 78;
+    let markHeight1 = 1.69;
+    let johnMass1 = 92;
+    let johnHeight1 = 1.95;
+
+    let markMass2 = 95;
+    let markHeight2 = 1.88;
+    let johnMass2 = 85;
+    let johnHeight2 = 1.76;
+
+    function compareBMI(markMass, markHeight, johnMass, johnHeight) {
+      const markBMI = markMass / markHeight ** 2;
+      const johnBMI = johnMass / johnHeight ** 2;
+
+      if (markBMI > johnBMI) {
+        console.log(
+          `Mark's BMI (${markBMI.toFixed(
+            2
+          )}) is higher than John's (${johnBMI.toFixed(2)})!`
+        );
+      } else if (markBMI < johnBMI) {
+        console.log(
+          `John's BMI (${johnBMI.toFixed(
+            2
+          )}) is higher than Mark's (${markBMI.toFixed(2)})!`
+        );
+      } else {
+        console.log(`Mark and John have the same BMI (${markBMI.toFixed(2)})!`);
+      }
+    }
+
+    console.log("Test Data 1:");
+    compareBMI(markMass1, markHeight1, johnMass1, johnHeight1);
+
+    console.log("Test Data 2:");
+    compareBMI(markMass2, markHeight2, johnMass2, johnHeight2);
+  </script>
+</html>
