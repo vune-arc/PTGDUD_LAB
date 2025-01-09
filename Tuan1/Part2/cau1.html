@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="vi"></html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+     
+        const calcAverage = (diem1, diem2, diem3) => (diem1 + diem2 + diem3) / 3;
+
+        
+        const tbDolphins1 = calcAverage(44, 23, 71);
+        const tbKoalas1 = calcAverage(65, 54, 49);
+        const tbDolphins2 = calcAverage(85, 54, 41);
+        const tbKoalas2 = calcAverage(23, 34, 27);
+
+    
+        const checkWinner = (tbDolphins, tbKoalas) => {
+            if (tbDolphins >= 2 * tbKoalas) {
+                console.log(`Dolphins thắng (${tbDolphins} vs ${tbKoalas})`);
+            } else if (tbKoalas >= 2 * tbDolphins) {
+                console.log(`Koalas thắng (${tbKoalas} vs ${tbDolphins})`);
+            } else {
+                console.log('Không đội nào thắng!');
+            }
+        };
+
+    
+        checkWinner(tbDolphins1, tbKoalas1);
+        checkWinner(tbDolphins2, tbKoalas2);
+    </script>
+</head>
+<body>
+</body>
+</html>
