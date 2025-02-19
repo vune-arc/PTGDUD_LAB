@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="vi"></html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Máy Tính Tiền Tip</title>
+    <link rel="icon" href="data:,">
+    <script>
+        function tinhTienTip(hoaDon) {
+            return hoaDon >= 50 && hoaDon <= 300 ? hoaDon * 0.15 : hoaDon * 0.20;
+        }
+
+        // Kiểm tra hàm với giá trị hóa đơn là 100
+        console.log(tinhTienTip(100)); // Nên in ra 15
+
+        // Tạo một mảng 'hoaDons' chứa dữ liệu kiểm tra
+        const hoaDons = [125, 555, 44];
+
+        // Tạo một mảng 'tienTips' chứa giá trị tiền tip cho mỗi hóa đơn
+        const tienTips = hoaDons.map(hoaDon => tinhTienTip(hoaDon));
+
+        // Tạo một mảng 'tong' chứa tổng giá trị, tức là hóa đơn + tiền tip
+        const tong = hoaDons.map((hoaDon, index) => hoaDon + tienTips[index]);
+
+        console.log('Hóa Đơn:', hoaDons);
+        console.log('Tiền Tip:', tienTips);
+        console.log('Tổng:', tong);
+    </script>
+</head>
+<body>
+
+</body>
+</html>
