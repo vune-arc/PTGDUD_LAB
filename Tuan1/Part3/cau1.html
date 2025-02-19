@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="vi"></html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dự báo nhiệt độ</title>
+    <script>
+        function printForecast(arr) {
+            let forecastStr = '... ';
+            for (let i = 0; i < arr.length; i++) {
+                forecastStr += `${arr[i]}°C trong ${i + 1} ngày ... `;
+            }
+            console.log(forecastStr);
+        }
+
+        // Dữ liệu kiểm tra
+        const data1 = [17, 21, 23];
+        const data2 = [12, 5, -5, 0, 4];
+
+        // Kiểm tra hàm với cả hai bộ dữ liệu
+        printForecast(data1);
+        printForecast(data2);
+    </script>
+</head>
+<body>
+</body>
+</html>
