@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="vi"></html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đoán Số Của Tôi!</title>
+    <style>
+        body {
+            background-color: #222;
+            color: #eee;
+            font-family: sans-serif;
+        }
+        .number {
+            width: 15rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Đoán Số Của Tôi!</h1>
+        <p class="between">(Giữa 1 và 20)</p>
+        <button class="again">Lại lần nữa!</button>
+        <div class="number">?</div>
+    </header>
+    <main>
+        <section class="left">
+            <input type="number" class="guess">
+            <button class="check">Kiểm tra!</button>
+        </section>
+        <section class="right">
+            <p class="message">Bắt đầu đoán...</p>
+            <p class="label-score">💯 Điểm: <span class="score">20</span></p>
+            <p class="label-highscore">🥇 Điểm cao nhất: <span class="highscore">0</span></p>
+        </section>
+    </main>
+    <script>
+        let score = 20;
+        let secretNumber = Math.trunc(Math.random() * 20) + 1;
+
+        document.querySelector('.again').addEventListener('click', function() {
+            score = 20;
+            secretNumber = Math.trunc(Math.random() * 20) + 1;
+
+            document.querySelector('.message').textContent = 'Bắt đầu đoán...';
+            document.querySelector('.score').textContent = score;
+            document.querySelector('.number').textContent = '?';
+            document.querySelector('.guess').value = '';
+            document.querySelector('body').style.backgroundColor = '#222';
+            document.querySelector('.number').style.width = '15rem';
+        });
+    </script>
+</body>
+</html>
