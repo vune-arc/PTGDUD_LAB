@@ -2,15 +2,14 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import './components/MyComponent.jsx'
-import './components/Total.jsx'
-function App() {
-  const [count, setCount] = useState(0)
+import MyComponent from './components/MyComponent' // Import MyComponent
 
+function App() {
   return (
-    <>
-      
-    </>
+    <div>
+      <h1>Investment Calculator</h1>
+      <MyComponent /> {/* Hiển thị component MyComponent */}
+    </div>
   )
 }
 
