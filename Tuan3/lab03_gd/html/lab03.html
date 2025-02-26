@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cheffy - Search</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <script src="../js/jquery-3.7.1.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <style>
+        .filter-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .rating-stars input {
+            display: none;
+        }
+
+        .rating-stars label {
+            font-size: 24px;
+            cursor: pointer;
+            color: #ddd;
+        }
+
+        .rating-stars input:checked~label {
+            color: #ffcc00;
+        }
+
+        .no-result {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .tag {
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 14px;
+            margin: 5px;
+            display: inline-block;
+        }
+
+        .tag-pink {
+            background: #ffb6c1;
+        }
+
+        .tag-blue {
+            background: #d8b9ff;
+        }
+
+        .tag-red {
+            background: #ff7f7f;
+        }
+
+        .tag-green {
+            background: #a8e6cf;
+        }
+
+        .containerf {
+            width: 90%;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <div class="containerf">
+        <nav class="navbar navbar-light bg-white shadow-sm p-3">
+            <div class="container">
+                <div class="d-flex align-items-center gap-2" style="padding-right: 7px;">
+                    <img src="../img/Screenshot 2025-02-26 182137.png" alt="Logo" width="40">
+                    <h2 class="" style="color: pink">Cheffy</h2>
+                </div>
+
+                <form class="d-flex w-10 p-0">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-danger" type="submit">Search</button>
+                </form>
+                <nav class="navbar navbar-expand-lg bg-white">
+                    <div class="container">
+                        <ul class="navbar-nav mx-auto">
+                            <li class="nav-item"><a class="nav-link text-secondary" href="#">What to cook</a></li>
+                            <li class="nav-item"><a class="nav-link text-secondary" href="#">Recipes</a></li>
+                            <li class="nav-item"><a class="nav-link text-secondary" href="#">Ingredients</a></li>
+                            <li class="nav-item"><a class="nav-link text-secondary" href="#">Occasions</a></li>
+                            <li class="nav-item"><a class="nav-link text-secondary" href="#">About Us</a></li>
+                        </ul>
+                    </div>
+                </nav>
+                <div>
+                    <a href="#" class="btn btn-danger">Your Recipe Box</a>
+                    <img src="../img/Screenshot 2025-02-26 182137.png" alt="Logo" width="40">
+                </div>
+
+            </div>
+        </nav>
+
+        <!-- Main Layout -->
+        <div class="container mt-4">
+            <div class="row">
+                <!-- Sidebar Filter -->
+                <div class="col-md-3">
+                    <div class="filter-section">
+                        <h5><strong>Filters</strong></h5>
+                        <hr>
+                        <h6>Type</h6>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-check">
+                                    <input class="form-check-input custom-checkbox" type="checkbox" id="pan-fried">
+                                    <label class="form-check-label" for="pan-fried">Pan-fried</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input custom-checkbox" type="checkbox" id="grilled" checked>
+                                    <label class="form-check-label" for="grilled">Grilled</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input custom-checkbox" type="checkbox" id="sauteed" checked>
+                                    <label class="form-check-label" for="grilled">Sauteed</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input custom-checkbox" type="checkbox" id="steamed" checked>
+                                    <label class="form-check-label" for="grilled">Steamed</label>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-check">
+                                    <input class="form-check-input custom-checkbox" type="checkbox" id="stir-fried">
+                                    <label class="form-check-label" for="stir-fried">Stir-fried</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input custom-checkbox" type="checkbox" id="roasted" checked>
+                                    <label class="form-check-label" for="roasted">Roasted</label>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <h6>Time</h6>
+                        <div class="d-flex justify-content-between">
+                            <span>30 minutes</span>
+                            <span>50 minutes</span>
+                        </div>
+                        <input type="range" class="form-range" min="30" max="50" step="5">
+                        <hr>
+                        <h6>Rating</h6>
+                        <div class="rating-stars">
+                            <div class="form-check">
+                                <input type="checkbox" id="rating-5" class="form-check-input custom-checkbox">
+                                <label for="rating-5">⭐⭐⭐⭐⭐</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" id="rating-4" class="form-check-input custom-checkbox" checked>
+                                <label for="rating-4">⭐⭐⭐⭐</label>
+                            </div>
+                        </div>
+                        <hr>
+                        <button class="btn btn-danger w-100 mt-3">Apply</button>
+                    </div>
+                </div>
+        
+                <!-- Search Results -->
+                <div class="col-md-9">
+                    <div class="no-result">
+                        <img src="../img/Screenshot 2025-02-26 183633.png" alt="No Result">
+                        <h3>Sorry, no results were found for <strong>"cakescascsa"</strong></h3>
+                        <p>We have all your Independence Day sweets covered.</p>
+                        <div>
+                            <span class="tag tag-pink">Sweet Cake</span>
+                            <span class="tag tag-blue">Black Cake</span>
+                            <span class="tag tag-red">Pozole Verde</span>
+                            <span class="tag tag-green">Healthy Food</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</body>
+
+</html>
