@@ -16,8 +16,11 @@ function calculatorReducer(state, action) {
       return { result: action.numA * action.numB, operator: "*" };
     case "DIVIDE":
       return {
-        result: action.numB !== 0 ? action.numA / action.numB : "Không thể chia cho 0",
-        operator: "/"
+        result:
+          action.numB !== 0
+            ? action.numA / action.numB
+            : "Không thể chia cho 0",
+        operator: "/",
       };
     default:
       return state;
@@ -25,15 +28,15 @@ function calculatorReducer(state, action) {
 }
 
 function App() {
-  const [inputValueA, setInputValueA] = useState("");
-  const [inputValueB, setInputValueB] = useState("");
-  const [selectedOperator, setSelectedOperator] = useState(""); // Lưu toán tử được chọn
+  const inputRefA = useRef(null);
+  const inputRefB = useRef(null);
+  const [selectedOperator, setSelectedOperator] = useState("ADD"); // Lưu toán tử được chọn
   const [state, dispatch] = useReducer(calculatorReducer, initialState);
   const input = useRef(null);
 
   const handleCalculate = () => {
-    const numA = parseFloat(inputValueA);
-    const numB = parseFloat(inputValueB);
+    const numA = parseFloat(inputRefA.current.value);
+    const numB = parseFloat(inputRefB.current.value);
 
     if (isNaN(numA) || isNaN(numB)) {
       alert("Vui lòng nhập số hợp lệ!");
@@ -50,19 +53,8 @@ function App() {
 
   return (
     <>
-      <input
-        type="number"
-        placeholder="Nhập số A"
-        value={inputValueA}
-        onChange={(e) => setInputValueA(e.target.value)}
-      />
-      <br />
-      <input
-        type="number"
-        placeholder="Nhập số B"
-        value={inputValueB}
-        onChange={(e) => setInputValueB(e.target.value)}
-      />
+      <input ref={inputRefA} type="number" placeholder="Nhập số A" />
+      <input ref={inputRefB} type="number" placeholder="Nhập số B" />
       <br />
 
       <label>
@@ -72,7 +64,8 @@ function App() {
           value="ADD"
           onChange={(e) => setSelectedOperator(e.target.value)}
           defaultChecked
-        /> +
+        />{" "}
+        +
       </label>
       <label>
         <input
@@ -80,7 +73,8 @@ function App() {
           name="group"
           value="SUBTRACT"
           onChange={(e) => setSelectedOperator(e.target.value)}
-        /> -
+        />{" "}
+        -
       </label>
       <label>
         <input
@@ -88,7 +82,8 @@ function App() {
           name="group"
           value="MULTIPLY"
           onChange={(e) => setSelectedOperator(e.target.value)}
-        /> *
+        />{" "}
+        *
       </label>
       <label>
         <input
@@ -96,14 +91,17 @@ function App() {
           name="group"
           value="DIVIDE"
           onChange={(e) => setSelectedOperator(e.target.value)}
-        /> /
+        />{" "}
+        /
       </label>
 
       <br />
       <button onClick={handleCalculate}>Tính toán</button>
       {/* <Button valueResult={state.result}>Kết quả</Button> */}
 
-      <h3>Kết quả phép tính {state.operator} là: {state.result}</h3>
+      <h3>
+        Kết quả phép tính {state.operator} là: {state.result}
+      </h3>
     </>
   );
 }
