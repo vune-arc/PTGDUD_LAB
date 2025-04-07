@@ -9,7 +9,7 @@ function App() {
 
   return (
     <>
-      <div className="flex min-h-screen">
+      <div className="flex min-h-screen h-[80vh]">
         {/* Sidebar */}
         <Menu /> {/* Use the Menu component here */}
 

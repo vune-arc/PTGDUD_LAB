@@ -15,7 +15,7 @@ function MenuItem({ iconSrc, label }) {
     // >
     <>
       <img src={iconSrc} alt={label} className="w-5 h-5 opacity-80" />
-      <span>{label}</span>
+      <span className=''>{label}</span>
       </>
     
   );
