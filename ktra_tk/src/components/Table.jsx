@@ -129,6 +129,23 @@ function Table() {
 
     reader.readAsArrayBuffer(file);
   };
+  const handleExportExcel = () => {
+    const worksheet = XLSX.utils.json_to_sheet(
+      customers.map((c) => ({
+        "Customer Name": c.customerName,
+        "Company": c.companyName,
+        "Order Value": c.orderValue,
+        "Order Date": c.orderDate,
+        "Status": c.status,
+        "Avatar": c.avatar,
+      }))
+    );
+
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Customers");
+
+    XLSX.writeFile(workbook, "customer_list.xlsx");
+  };
   return (
     <div>
       <div className="flex justify-between p-2">
@@ -160,10 +177,17 @@ function Table() {
             />
           </label>
 
-          <button className="flex items-center pl-8 pr-8 py-2 border rounded-lg border-pink-400 text-pink-400 hover:bg-pink-50">
-            <img src="./img/Download.png" alt="" className="h-[25px] mr-2" />
+          <label className="flex items-center pl-8 pr-8 py-2 border rounded-lg border-pink-400 text-pink-400 hover:bg-pink-50 cursor-pointer">
+            <img src="./img/Move up.png" alt="" className="h-[25px] mr-2" />
             Export
-          </button>
+            <input
+              type="file"
+              accept=".xlsx, .xls"
+              onChange={handleExportExcel}
+              className="hidden"
+            />
+          </label>
+         
         </div>
       </div>
 
