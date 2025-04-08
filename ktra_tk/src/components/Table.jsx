@@ -3,6 +3,7 @@ import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import EditCustomerModal from "./EditCustomerModal";
 import { useCustomer } from "../context/CustomerContext";
+import * as XLSX from "xlsx";
 function Table() {
   // const [customers, setCustomers] = useState([]);
   const [page, setPage] = useState(1);
@@ -47,7 +48,7 @@ function Table() {
   };
   const handleDeleteClick = (customer) => {
     if (window.confirm("Are you sure you want to delete this customer?")) {
-      deleteCustomer(customer.id);
+      deleteCustomer(customer);
     }
   };
 
@@ -101,7 +102,33 @@ function Table() {
     setOpenModal(false);
     setIsAddMode(false);
   };
+  ///////
+  const handleImportExcel = (event) => {
+    const file = event.target.files[0];
+    if (!file) return;
 
+    const reader = new FileReader();
+
+    reader.onload = (e) => {
+      const data = new Uint8Array(e.target.result);
+      const workbook = XLSX.read(data, { type: "array" });
+      const worksheet = workbook.Sheets[workbook.SheetNames[0]];
+      const jsonData = XLSX.utils.sheet_to_json(worksheet);
+
+      const importedCustomers = jsonData.map((row, index) => ({
+        customerName: row["Customer Name"] || "Chưa rõ",
+        companyName: row["Company"] || "Không xác định",
+        orderValue: parseFloat(row["Order Value"] || 0),
+        orderDate: new Date().toISOString().split("T")[0],
+        status: (row["Status"] || "New"),
+        avatar: row["Avatar"] || `https://i.pravatar.cc/150?img=${Math.floor(Math.random() * 70) + 1}`,
+      }));
+
+      importedCustomers.forEach(addCustomer);
+    };
+
+    reader.readAsArrayBuffer(file);
+  };
   return (
     <div>
       <div className="flex justify-between p-2">
@@ -122,10 +149,16 @@ function Table() {
             Add new
           </button>
 
-          <button className="flex items-center pl-8 pr-8 py-2 border rounded-lg border-pink-400 text-pink-400 hover:bg-pink-50">
+          <label className="flex items-center pl-8 pr-8 py-2 border rounded-lg border-pink-400 text-pink-400 hover:bg-pink-50 cursor-pointer">
             <img src="./img/Move up.png" alt="" className="h-[25px] mr-2" />
             Import
-          </button>
+            <input
+              type="file"
+              accept=".xlsx, .xls"
+              onChange={handleImportExcel}
+              className="hidden"
+            />
+          </label>
 
           <button className="flex items-center pl-8 pr-8 py-2 border rounded-lg border-pink-400 text-pink-400 hover:bg-pink-50">
             <img src="./img/Download.png" alt="" className="h-[25px] mr-2" />
