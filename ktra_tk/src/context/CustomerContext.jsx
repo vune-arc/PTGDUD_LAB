@@ -29,9 +29,13 @@ export const CustomerProvider = ({ children }) => {
     );
     setCustomers(updatedList);
   };
+  const deleteCustomer = (id) => {
+    const updatedList = customers.filter((cust) => cust.id !== id);
+    setCustomers(updatedList);
+  };
 
   return (
-    <CustomerContext.Provider value={{ customers, setCustomers, addCustomer, updateCustomer }}>
+    <CustomerContext.Provider value={{ customers, setCustomers, addCustomer, updateCustomer, deleteCustomer }}>
       {children}
     </CustomerContext.Provider>
   );

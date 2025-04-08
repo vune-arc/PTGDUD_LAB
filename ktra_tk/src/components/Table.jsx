@@ -10,7 +10,7 @@ function Table() {
   const [openModal, setOpenModal] = useState(false);
   const [selectedCustomer, setSelectedCustomer] = useState(null);
   const [isAddMode, setIsAddMode] = useState(false); // 👈 Add mode flag
-  const { customers, addCustomer, updateCustomer } = useCustomer();
+  const { customers, addCustomer, updateCustomer, deleteCustomer } = useCustomer();
   // useEffect(() => {
   //   fetch("https://67f3c671cbef97f40d2c08a5.mockapi.io/api/v1/customers")
   //     .then((res) => res.json())
@@ -45,13 +45,18 @@ function Table() {
     setIsAddMode(false);
     setTimeout(() => setOpenModal(true), 0);
   };
+  const handleDeleteClick = (customer) => {
+    if (window.confirm("Are you sure you want to delete this customer?")) {
+      deleteCustomer(customer.id);
+    }
+  };
 
   const handleAddNew = () => {
     const nextId = customers.length > 0
-        ? Math.max(...customers.map((c) => parseInt(c.id))) + 1
-        : 1;
+      ? Math.max(...customers.map((c) => parseInt(c.id))) + 1
+      : 1;
     setSelectedCustomer({
-      
+
       customerName: "",
       companyName: "",
       orderValue: "",
@@ -81,7 +86,7 @@ function Table() {
   //       cust.id === selectedCustomer.id ? selectedCustomer : cust
   //     );
   //     setCustomers(updatedCustomers);
-      
+
   //   }
   //   console.log(customers);
   //   setOpenModal(false);
@@ -160,13 +165,11 @@ function Table() {
                 className={`${index % 2 === 0 ? "bg-white" : "bg-gray-50"
                   } hover:bg-gray-100 transition-colors duration-200`}
               >
-                <td className="py-4 px-6 text-left flex items-center gap-2">
-                  <img
-                    src={customer.avatar}
-                    alt="avatar"
-                    className="w-8 h-8 rounded-full"
-                  />
-                  {customer.customerName}
+                <td className="py-4 px-6 text-left align-middle">
+                  <div className="flex items-center gap-2">
+                    <img src={customer.avatar} alt="avatar" className="w-8 h-8 rounded-full object-cover" />
+                    <span className="text-sm font-medium text-gray-800">{customer.customerName}</span>
+                  </div>
                 </td>
                 <td className="py-4 px-6 text-left">{customer.companyName}</td>
                 <td className="py-4 px-6 text-left">
@@ -185,12 +188,21 @@ function Table() {
                   </span>
                 </td>
                 <td className="py-4 px-6 text-left">
-                  <button
-                    className="text-blue-500 hover:underline"
-                    onClick={() => handleEditClick(customer)}
-                  >
-                    <img src="/img/create.png" alt="Edit" />
-                  </button>
+                  <div className="flex items-center gap-2">
+                    <button
+                      className="text-blue-500 hover:underline"
+                      onClick={() => handleEditClick(customer)}
+                    >
+                      <img src="/img/create.png" alt="Edit" />
+                    </button>
+                    <button
+                      className="text-blue-500 hover:underline"
+                      onClick={() => handleDeleteClick(customer)}
+                    >
+                      <img src="/img/delete.jpg" alt="Edit" className="w-6 h-6" />
+                    </button>
+                  </div>
+
                 </td>
               </tr>
             ))}

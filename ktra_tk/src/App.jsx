@@ -20,7 +20,7 @@ function App() {
     <CustomerProvider>
     <Router>
       <div className="w-full min-h-screen flex justify-center overflow-x-hidden bg-gray-50 pt-0 mt-0">
-        <div className="flex w-[1390px] h-screen overflow-hidden shadow-lg border border-gray-200 rounded-xl pt-0 mt-0">
+        <div className="flex w-[1460px] h-screen overflow-hidden shadow-lg border border-gray-200 rounded-xl pt-0 mt-0">
           <Menu />
           <div className="flex-1 flex flex-col">
             <Header />
