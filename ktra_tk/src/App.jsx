@@ -7,7 +7,11 @@ import Content from './components/Contents';
 import Notifications from './pages/Notifications';
 import Help from './pages/Help';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
+import Project from './pages/Projects';
+import Team from  './pages/Teams';
+import Analytics from './pages/Analytics';
+import Messages from './pages/Messages';
+import Integrations from './pages/Integrations';
 function App() {
   const [count, setCount] = useState(0);
 
@@ -24,6 +28,11 @@ function App() {
                 <Route path="/notifications" element={<Notifications />} />
                 <Route path="/help" element={<Help />} />
                 <Route path="/dashboard" element={<Content />} />
+                <Route path="/projects" element={<Project />} />
+                <Route path="/teams" element={<Team />} />
+                <Route path="/analytics" element={<Analytics />} />
+                <Route path="/messages" element={<Messages />} />
+                <Route path="/integrations" element={<Integrations />} />
               </Routes>
             </div>
           </div>
