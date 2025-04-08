@@ -12,10 +12,12 @@ import Team from  './pages/Teams';
 import Analytics from './pages/Analytics';
 import Messages from './pages/Messages';
 import Integrations from './pages/Integrations';
+import { CustomerProvider } from "./context/CustomerContext";
 function App() {
   const [count, setCount] = useState(0);
 
   return (
+    <CustomerProvider>
     <Router>
       <div className="w-full min-h-screen flex justify-center overflow-x-hidden bg-gray-50 pt-0 mt-0">
         <div className="flex w-[1390px] h-screen overflow-hidden shadow-lg border border-gray-200 rounded-xl pt-0 mt-0">
@@ -39,6 +41,7 @@ function App() {
         </div>
       </div>
     </Router>
+    </CustomerProvider>
   );
 }
 

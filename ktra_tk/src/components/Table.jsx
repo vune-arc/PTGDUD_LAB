@@ -2,21 +2,21 @@ import React, { useState, useEffect } from "react";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import EditCustomerModal from "./EditCustomerModal";
-
+import { useCustomer } from "../context/CustomerContext";
 function Table() {
-  const [customers, setCustomers] = useState([]);
+  // const [customers, setCustomers] = useState([]);
   const [page, setPage] = useState(1);
   const rowsPerPage = 5;
   const [openModal, setOpenModal] = useState(false);
   const [selectedCustomer, setSelectedCustomer] = useState(null);
   const [isAddMode, setIsAddMode] = useState(false); // 👈 Add mode flag
-
-  useEffect(() => {
-    fetch("https://67f3c671cbef97f40d2c08a5.mockapi.io/api/v1/customers")
-      .then((res) => res.json())
-      .then((data) => setCustomers(data))
-      .catch((error) => console.error("Error fetching customers:", error));
-  }, []);
+  const { customers, addCustomer, updateCustomer } = useCustomer();
+  // useEffect(() => {
+  //   fetch("https://67f3c671cbef97f40d2c08a5.mockapi.io/api/v1/customers")
+  //     .then((res) => res.json())
+  //     .then((data) => setCustomers(data))
+  //     .catch((error) => console.error("Error fetching customers:", error));
+  // }, []);
 
   const handleChangePage = (event, value) => {
     setPage(value);
@@ -65,26 +65,34 @@ function Table() {
   useEffect(() => {
     console.log(customers);
   }, [customers]);
+  // const handleSave = () => {
+  //   if (isAddMode) {
+  //     const nextId = customers.length > 0
+  //       ? Math.max(...customers.map((c) => parseInt(c.id))) + 1
+  //       : 1;
 
+  //     const newCustomer = {
+  //       ...selectedCustomer,
+  //       id: ${nextId}, 
+  //     };
+  //     setCustomers([newCustomer, ...customers]); // 👈 thêm vào đầu danh sách
+  //   } else {
+  //     const updatedCustomers = customers.map((cust) =>
+  //       cust.id === selectedCustomer.id ? selectedCustomer : cust
+  //     );
+  //     setCustomers(updatedCustomers);
+      
+  //   }
+  //   console.log(customers);
+  //   setOpenModal(false);
+  //   setIsAddMode(false);
+  // };
   const handleSave = () => {
     if (isAddMode) {
-      const nextId = customers.length > 0
-        ? Math.max(...customers.map((c) => parseInt(c.id))) + 1
-        : 1;
-
-      const newCustomer = {
-        ...selectedCustomer,
-        id: `${nextId}`, 
-      };
-      setCustomers([newCustomer, ...customers]); // 👈 thêm vào đầu danh sách
+      addCustomer(selectedCustomer);
     } else {
-      const updatedCustomers = customers.map((cust) =>
-        cust.id === selectedCustomer.id ? selectedCustomer : cust
-      );
-      setCustomers(updatedCustomers);
-      
+      updateCustomer(selectedCustomer);
     }
-    console.log(customers);
     setOpenModal(false);
     setIsAddMode(false);
   };
