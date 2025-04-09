@@ -9,7 +9,7 @@ function Overview() {
   const [newCustomerChange, setNewCustomerChange] = useState([]);
 
   useEffect(() => {
-    fetch("https://67c83e5f0acf98d070859495.mockapi.io/api/v1/turnover") // Giả sử URL của turnover
+    fetch("https://67c83e5f0acf98d070859495.mockapi.io/api/v1/turnover") 
       .then((res) => res.json())
       .then((data) => {
         setTurnover(data.map((item) => item.value));
@@ -18,9 +18,9 @@ function Overview() {
       .catch((error) => console.error("Error fetching turnover:", error));
   }, []);
 
-  
+
   useEffect(() => {
-    fetch("https://67c83e5f0acf98d070859495.mockapi.io/api/v1/profit") 
+    fetch("https://67c83e5f0acf98d070859495.mockapi.io/api/v1/profit")
       .then((res) => res.json())
       .then((data) => {
         setProfit(data.map((item) => item.value));
@@ -29,9 +29,9 @@ function Overview() {
       .catch((error) => console.error("Error fetching profit:", error));
   }, []);
 
- 
+
   useEffect(() => {
-    fetch("https://67f3c671cbef97f40d2c08a5.mockapi.io/api/v1/new-customers") 
+    fetch("https://67f3c671cbef97f40d2c08a5.mockapi.io/api/v1/new-customers")
       .then((res) => res.json())
       .then((data) => {
         setNewCustomer(data.map((item) => item.value));
@@ -44,21 +44,21 @@ function Overview() {
     {
       title: "Turnover",
       value: turnover.join(", "),
-      change: turnoverChange.join(", "), 
+      change: turnoverChange.join(", "),
       bg: "bg-pink-50",
       icon: "/img/Button 1509.png",
     },
     {
       title: "Profit",
-      value: profit.join(", "), 
-      change: profitChange.join(", "), 
+      value: profit.join(", "),
+      change: profitChange.join(", "),
       bg: "bg-blue-50",
       icon: "/img/Button 1529.png",
     },
     {
       title: "New customer",
-      value: newCustomer.join(", "), 
-      change: newCustomerChange.join(", "), 
+      value: newCustomer.join(", "),
+      change: newCustomerChange.join(", "),
       bg: "bg-indigo-50",
       icon: "/img/Button 1530.png",
     },
@@ -86,12 +86,11 @@ function Overview() {
               </div>
 
               <div className="text-xl font-bold text-gray-800 text-left">
-                ${card.value}
+                {card.title === "New customer" ? card.value : `$${card.value}`}
               </div>
               <div
-                className={`text-sm mt-1 ${
-                  card.change >= 0 ? "text-green-500" : "text-red-500"
-                } text-left`}
+                className={`text-sm mt-1 ${card.change >= 0 ? "text-green-500" : "text-red-500"
+                  } text-left`}
               >
                 {card.change >= 0 ? "▲" : "▼"} {Math.abs(card.change)}% period
                 of change
