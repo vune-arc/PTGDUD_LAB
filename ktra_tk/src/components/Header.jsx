@@ -15,6 +15,7 @@ function Header() {
     '/analytics': 'Analytics',
     '/messages': 'Messages',
     '/integrations': 'Integrations',
+    '/profile': 'My Profile',
   };
   
 
@@ -45,7 +46,7 @@ function Header() {
             <img src="./img/Question 1.png" className="h-[20px]" alt="Help" />
           </button>
 
-          <button>
+          <button onClick={() => navigate('/profile')}>
             <img src="./img/Avatar (1).png" className="h-[32px] rounded-full" alt="Profile" />
           </button>
         </div>

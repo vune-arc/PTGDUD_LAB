@@ -14,6 +14,7 @@ import Messages from './pages/Messages';
 import Integrations from './pages/Integrations';
 import { CustomerProvider } from "./context/CustomerContext";
 import { NotificationProvider } from "./context/NotificationContext";
+import MyProfile from './pages/MyProfile';
 function App() {
   const [count, setCount] = useState(0);
 
@@ -37,6 +38,7 @@ function App() {
                 <Route path="/analytics" element={<Analytics />} />
                 <Route path="/messages" element={<Messages />} />
                 <Route path="/integrations" element={<Integrations />} />
+                <Route path="/profile" element={<MyProfile />} />
               </Routes>
             </div>
           </div>
