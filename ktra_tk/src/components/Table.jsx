@@ -52,7 +52,7 @@ function Table() {
       companyName: "",
       orderValue: "",
       orderDate: new Date().toISOString(),
-      status: "new",
+      status: "New",
       avatar: "" + Math.floor(Math.random() * 70),
     });
     setIsAddMode(true);

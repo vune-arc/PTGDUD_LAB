@@ -11,6 +11,7 @@ function App() {
   return (
     <>
       <Header/>
+      <img src="./img/banner.png" alt="" className='w-full' />
       <Footer/>
     </>
   )
