@@ -9,6 +9,7 @@ import ToDoList from './components/ToDoList'
 import ThemeToggleApp from './components/ThemeToggleApp'
 import ShoppingCartApp from './components/ShoppingCartApp'
 import Login from './components/Login'
+import AsyncThunk from './components/AsyncThunk'
 function App() {
   const [count, setCount] = useState(0)
 
@@ -21,7 +22,8 @@ function App() {
       {/* <ThemeToggleApp/> */}
       <div style={{height: '100vh'}}>
       {/* <ShoppingCartApp/> */}
-     <Login/>
+     {/* <Login/> */}
+     <AsyncThunk/>
     </div>
       
     </>
