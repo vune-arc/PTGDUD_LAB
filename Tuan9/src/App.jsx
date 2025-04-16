@@ -6,6 +6,7 @@ import Counter from './components/Counter'
 import CounterApp from './components/CounterRedux'
 import CounterReduxToolkit from './components/CounterReduxToolkit'
 import ToDoList from './components/ToDoList'
+import ThemeToggleApp from './components/ThemeToggleApp'
 function App() {
   const [count, setCount] = useState(0)
 
@@ -14,7 +15,8 @@ function App() {
       {/* <Counter/> */}
       {/* <CounterApp/> */}
       {/* <CounterReduxToolkit/> */}
-      <ToDoList/>
+      {/* <ToDoList/> */}
+      <ThemeToggleApp/>
     </>
   )
 }
