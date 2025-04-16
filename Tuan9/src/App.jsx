@@ -7,16 +7,23 @@ import CounterApp from './components/CounterRedux'
 import CounterReduxToolkit from './components/CounterReduxToolkit'
 import ToDoList from './components/ToDoList'
 import ThemeToggleApp from './components/ThemeToggleApp'
+import ShoppingCartApp from './components/ShoppingCartApp'
+import Login from './components/Login'
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-      {/* <Counter/> */}
+      
       {/* <CounterApp/> */}
       {/* <CounterReduxToolkit/> */}
       {/* <ToDoList/> */}
-      <ThemeToggleApp/>
+      {/* <ThemeToggleApp/> */}
+      <div style={{height: '100vh'}}>
+      {/* <ShoppingCartApp/> */}
+     <Login/>
+    </div>
+      
     </>
   )
 }
