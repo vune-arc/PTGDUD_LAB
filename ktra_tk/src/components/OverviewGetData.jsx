@@ -3,9 +3,6 @@ import { useCustomer } from "../context/CustomerContext";
 
 function OverviewGetData() {
     const { turnover, profit, newCustomerCount } = useCustomer();
-
-
-
     const cards = [
         {
             title: "Turnover",
