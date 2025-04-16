@@ -10,6 +10,7 @@ import ThemeToggleApp from './components/ThemeToggleApp'
 import ShoppingCartApp from './components/ShoppingCartApp'
 import Login from './components/Login'
 import AsyncThunk from './components/AsyncThunk'
+import CounterNew from './components/CounterNew'
 function App() {
   const [count, setCount] = useState(0)
 
@@ -23,7 +24,8 @@ function App() {
       <div style={{height: '100vh'}}>
       {/* <ShoppingCartApp/> */}
      {/* <Login/> */}
-     <AsyncThunk/>
+     {/* <AsyncThunk/> */}
+     <CounterNew/>
     </div>
       
     </>
