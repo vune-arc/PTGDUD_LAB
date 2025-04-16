@@ -1,7 +1,7 @@
 import React from 'react';
 import { createSlice, configureStore } from '@reduxjs/toolkit';
 import { Provider, useSelector, useDispatch } from 'react-redux';
-import './ThemeToggleApp.css'; // Import CSS file for styles
+import '../css/ThemeToggleApp.css'; // Import CSS file for styles
 
 // 1. Tạo Slice cho Theme
 const themeSlice = createSlice({

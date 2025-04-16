@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { createSlice, configureStore } from '@reduxjs/toolkit';
 import { Provider, useSelector, useDispatch } from 'react-redux';
-import './ShoppingCartApp.css'; // Import CSS for styling
+import '../css/ShoppingCartApp.css'; // Import CSS for styling
 
 // 1. Tạo Slice cho Giỏ hàng (Cart)
 const cartSlice = createSlice({

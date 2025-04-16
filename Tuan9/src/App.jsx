@@ -11,6 +11,7 @@ import ShoppingCartApp from './components/ShoppingCartApp'
 import Login from './components/Login'
 import AsyncThunk from './components/AsyncThunk'
 import CounterNew from './components/CounterNew'
+import Bmi from './components/Bmi'
 function App() {
   const [count, setCount] = useState(0)
 
@@ -25,7 +26,8 @@ function App() {
       {/* <ShoppingCartApp/> */}
      {/* <Login/> */}
      {/* <AsyncThunk/> */}
-     <CounterNew/>
+     {/* <CounterNew/> */}
+     <Bmi/>
     </div>
       
     </>

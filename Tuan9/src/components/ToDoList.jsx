@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { createSlice, configureStore } from '@reduxjs/toolkit';
 import { Provider, useSelector, useDispatch } from 'react-redux';
-import './TodoApp.css'; // Import CSS file for styles
+import '../css/TodoApp.css'; // Import CSS file for styles
 
 // 1. Tạo Slice cho To-Do List
 const todoSlice = createSlice({
