@@ -13,8 +13,8 @@ function App() {
     <>
       {/* <Counter/> */}
       {/* <CounterApp/> */}
-      <CounterReduxToolkit/>
-      {/* <ToDoList/> */}
+      {/* <CounterReduxToolkit/> */}
+      <ToDoList/>
     </>
   )
 }
